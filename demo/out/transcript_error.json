@@ -1,0 +1,68 @@
+{
+ "results": [
+  {
+   "motion": "M1",
+   "ayes_said": 4,
+   "ayes_seen": 3,
+   "action": "hold_approval_request_human",
+   "message": "M1: transcript says 4 ayes, video shows 3 (unsure seats []). Minutes stay unapproved until a person confirms."
+  }
+ ],
+ "minutes_approvable": false,
+ "trace": [
+  {
+   "motion": "M1",
+   "step": 0,
+   "tool": "count_hands",
+   "args": {
+    "stride": 5,
+    "thresh": 35
+   },
+   "obs": {
+    "ayes_seen": [
+     0,
+     1,
+     2
+    ],
+    "count": 3,
+    "unsure_seats": [],
+    "frames": 7,
+    "stride": 5,
+    "thresh": 35
+   },
+   "ms": 29
+  },
+  {
+   "motion": "M1",
+   "decision": "re-look",
+   "why": "transcript 4 vs seen 3, unsure []"
+  },
+  {
+   "motion": "M1",
+   "step": 1,
+   "tool": "count_hands",
+   "args": {
+    "stride": 1,
+    "thresh": 25
+   },
+   "obs": {
+    "ayes_seen": [
+     0,
+     1,
+     2
+    ],
+    "count": 3,
+    "unsure_seats": [],
+    "frames": 31,
+    "stride": 1,
+    "thresh": 25
+   },
+   "ms": 52
+  },
+  {
+   "motion": "M1",
+   "decision": "escalate",
+   "why": "transcript 4 vs seen 3, unsure []"
+  }
+ ]
+}
