@@ -1,0 +1,20 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "LambdaManageRcvOnly", "Effect": "Allow",
+     "Action": ["lambda:GetFunction","lambda:GetFunctionConfiguration","lambda:UpdateFunctionCode","lambda:UpdateFunctionConfiguration",
+                "lambda:PublishVersion","lambda:InvokeFunction","lambda:InvokeFunctionUrl","lambda:GetFunctionUrlConfig",
+                "lambda:UpdateFunctionUrlConfig","lambda:ListVersionsByFunction"],
+     "Resource": "arn:aws:lambda:us-east-2:*:function:roll-call-vision*"},
+    {"Sid": "LambdaLayerRcvOnly", "Effect": "Allow",
+     "Action": ["lambda:PublishLayerVersion","lambda:GetLayerVersion","lambda:ListLayerVersions"],
+     "Resource": ["arn:aws:lambda:us-east-2:*:layer:rcv-opencv5","arn:aws:lambda:us-east-2:*:layer:rcv-opencv5:*"]},
+    {"Sid": "ArtifactBucket", "Effect": "Allow",
+     "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],
+     "Resource": ["arn:aws:s3:::rcv-lumegrid-*","arn:aws:s3:::rcv-lumegrid-*/*"]},
+    {"Sid": "ReadLogs", "Effect": "Allow",
+     "Action": ["logs:FilterLogEvents","logs:GetLogEvents","logs:DescribeLogStreams"],
+     "Resource": "arn:aws:logs:us-east-2:*:log-group:/aws/lambda/roll-call-vision*"},
+    {"Sid": "WhoAmI", "Effect": "Allow", "Action": "sts:GetCallerIdentity", "Resource": "*"}
+  ]
+}
